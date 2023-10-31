@@ -6,9 +6,7 @@ COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
 WORKDIR /app
 EXPOSE 8000
-
-ARG DEV= false
-
+ARG DEV=false
 
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
@@ -22,21 +20,9 @@ RUN python -m venv /py && \
         --no-create-home \
         django-user
 
-        
-
-# RUN python -m venv /py
-# RUN /py/bin/pip install --upgrade pip
-# RUN pip freeze > requirements.txt
-# RUN /py/bin/pip install -r /tmp/requirements.txt
-# RUN rm -rf /tmp
-# RUN adduser \
-#         --disabled-password \
-#         --no-create-home \
-#         django-user
-
-
-ENV PATH = "/py/bin:$PATH"
+ENV PATH="/py/bin:$PATH"
 USER django-user
+
 
 
 
